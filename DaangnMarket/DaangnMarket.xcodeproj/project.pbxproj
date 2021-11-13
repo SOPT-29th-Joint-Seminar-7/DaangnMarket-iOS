@@ -97,6 +97,14 @@
 			path = Const;
 			sourceTree = "<group>";
 		};
+		DD1B9E07274070AF007844CB /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				DD3CA00B273F96D40050320E /* Info.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		DD3C9FF1273F96D30050320E = {
 			isa = PBXGroup;
 			children = (
@@ -136,9 +144,9 @@
 		DD3CA012273F97870050320E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				DD1B9E00274060B5007844CB /* Const */,
-				DD3CA00B273F96D40050320E /* Info.plist */,
 				DD3CA006273F96D40050320E /* Assets.xcassets */,
+				DD1B9E07274070AF007844CB /* Config */,
+				DD1B9E00274060B5007844CB /* Const */,
 				DD3CA013273F979A0050320E /* Storyboard */,
 			);
 			path = Resource;
@@ -503,7 +511,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9F4B35UX2F;
-				INFOPLIST_FILE = DaangnMarket/Resource/Info.plist;
+				INFOPLIST_FILE = DaangnMarket/Resource/Config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -523,7 +531,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9F4B35UX2F;
-				INFOPLIST_FILE = DaangnMarket/Resource/Info.plist;
+				INFOPLIST_FILE = DaangnMarket/Resource/Config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
