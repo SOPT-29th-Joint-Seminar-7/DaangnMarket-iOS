@@ -28,8 +28,8 @@ extension BaseNavigationController {
     private func setNavigationBarAppearance() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
-        appearance.backgroundColor = .white
-        appearance.shadowColor = .gray
+        appearance.backgroundColor = Color.daangnWhite
+        appearance.shadowColor = Color.daangnGray1
 
         navigationBar.standardAppearance = appearance
         navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
