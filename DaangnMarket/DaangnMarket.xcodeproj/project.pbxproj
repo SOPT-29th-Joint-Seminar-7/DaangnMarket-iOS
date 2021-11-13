@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5EFED3B8B27EDAEE073DF854 /* Pods_DaangnMarket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BA5C6C7DB48740F6C2EB1D /* Pods_DaangnMarket.framework */; };
 		DD3C9FFE273F96D30050320E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3C9FFD273F96D30050320E /* AppDelegate.swift */; };
 		DD3CA002273F96D30050320E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3CA001273F96D30050320E /* ViewController.swift */; };
 		DD3CA007273F96D40050320E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD3CA006273F96D40050320E /* Assets.xcassets */; };
@@ -14,12 +15,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13F433FEB99CB2A488D705BA /* Pods-DaangnMarket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaangnMarket.release.xcconfig"; path = "Target Support Files/Pods-DaangnMarket/Pods-DaangnMarket.release.xcconfig"; sourceTree = "<group>"; };
+		C7BA5C6C7DB48740F6C2EB1D /* Pods_DaangnMarket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaangnMarket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD3C9FFA273F96D30050320E /* DaangnMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaangnMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD3C9FFD273F96D30050320E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD3CA001273F96D30050320E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DD3CA006273F96D40050320E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD3CA009273F96D40050320E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD3CA00B273F96D40050320E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC371869C72E8FD0BB44E1D0 /* Pods-DaangnMarket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaangnMarket.debug.xcconfig"; path = "Target Support Files/Pods-DaangnMarket/Pods-DaangnMarket.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +31,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EFED3B8B27EDAEE073DF854 /* Pods_DaangnMarket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4342C56525BC2669F4B851CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7BA5C6C7DB48740F6C2EB1D /* Pods_DaangnMarket.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8EE07B11C06A34D25FDFDDC3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EC371869C72E8FD0BB44E1D0 /* Pods-DaangnMarket.debug.xcconfig */,
+				13F433FEB99CB2A488D705BA /* Pods-DaangnMarket.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DD3C9FF1273F96D30050320E = {
 			isa = PBXGroup;
 			children = (
 				DD3C9FFC273F96D30050320E /* DaangnMarket */,
 				DD3C9FFB273F96D30050320E /* Products */,
+				8EE07B11C06A34D25FDFDDC3 /* Pods */,
+				4342C56525BC2669F4B851CC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,9 +133,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD3CA00E273F96D40050320E /* Build configuration list for PBXNativeTarget "DaangnMarket" */;
 			buildPhases = (
+				46A1152F8ED05732B7C342E1 /* [CP] Check Pods Manifest.lock */,
 				DD3C9FF6273F96D30050320E /* Sources */,
 				DD3C9FF7273F96D30050320E /* Frameworks */,
 				DD3C9FF8273F96D30050320E /* Resources */,
+				072F8AC252D33E1527531289 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -164,6 +191,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		072F8AC252D33E1527531289 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DaangnMarket/Pods-DaangnMarket-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DaangnMarket/Pods-DaangnMarket-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DaangnMarket/Pods-DaangnMarket-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		46A1152F8ED05732B7C342E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DaangnMarket-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DD3C9FF6273F96D30050320E /* Sources */ = {
@@ -307,6 +376,7 @@
 		};
 		DD3CA00F273F96D40050320E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC371869C72E8FD0BB44E1D0 /* Pods-DaangnMarket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -326,6 +396,7 @@
 		};
 		DD3CA010273F96D40050320E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13F433FEB99CB2A488D705BA /* Pods-DaangnMarket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
