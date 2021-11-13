@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5EFED3B8B27EDAEE073DF854 /* Pods_DaangnMarket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BA5C6C7DB48740F6C2EB1D /* Pods_DaangnMarket.framework */; };
+		DD1B9DF72740579E007844CB /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1B9DF62740579E007844CB /* MainNavigationController.swift */; };
+		DD1B9DF927405A55007844CB /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1B9DF827405A55007844CB /* BaseNavigationController.swift */; };
+		DD1B9E0427406103007844CB /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1B9E0327406103007844CB /* Image.swift */; };
+		DD1B9E062740610C007844CB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1B9E052740610C007844CB /* Color.swift */; };
 		DD3C9FFE273F96D30050320E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3C9FFD273F96D30050320E /* AppDelegate.swift */; };
 		DD3CA007273F96D40050320E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD3CA006273F96D40050320E /* Assets.xcassets */; };
 		DD3CA00A273F96D40050320E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD3CA008273F96D40050320E /* LaunchScreen.storyboard */; };
@@ -23,6 +27,10 @@
 /* Begin PBXFileReference section */
 		13F433FEB99CB2A488D705BA /* Pods-DaangnMarket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaangnMarket.release.xcconfig"; path = "Target Support Files/Pods-DaangnMarket/Pods-DaangnMarket.release.xcconfig"; sourceTree = "<group>"; };
 		C7BA5C6C7DB48740F6C2EB1D /* Pods_DaangnMarket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaangnMarket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD1B9DF62740579E007844CB /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		DD1B9DF827405A55007844CB /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		DD1B9E0327406103007844CB /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		DD1B9E052740610C007844CB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DD3C9FFA273F96D30050320E /* DaangnMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaangnMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD3C9FFD273F96D30050320E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD3CA006273F96D40050320E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +75,28 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DD1B9DF527405758007844CB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				DD1B9DF827405A55007844CB /* BaseNavigationController.swift */,
+				DD1B9DF62740579E007844CB /* MainNavigationController.swift */,
+				DD3CA020273FA2AD0050320E /* TabBarController.swift */,
+				DD3CA028273FA3230050320E /* Chatting */,
+				DD3CA025273FA3040050320E /* MyTown */,
+				DD3CA022273FA2C90050320E /* MyPage */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		DD1B9E00274060B5007844CB /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				DD1B9E0327406103007844CB /* Image.swift */,
+				DD1B9E052740610C007844CB /* Color.swift */,
+			);
+			path = Const;
+			sourceTree = "<group>";
+		};
 		DD3C9FF1273F96D30050320E = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +136,7 @@
 		DD3CA012273F97870050320E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				DD1B9E00274060B5007844CB /* Const */,
 				DD3CA00B273F96D40050320E /* Info.plist */,
 				DD3CA006273F96D40050320E /* Assets.xcassets */,
 				DD3CA013273F979A0050320E /* Storyboard */,
@@ -132,23 +163,12 @@
 		DD3CA015273F97C20050320E /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				DD1B9DF527405758007844CB /* Base */,
 				DD3CA02B273FA36B0050320E /* Writing */,
-				DD3CA019273FA1930050320E /* TabBar */,
 				DD3CA01A273FA1990050320E /* Home1 */,
 				DD3CA01B273FA1A10050320E /* Home2 */,
 			);
 			path = Screen;
-			sourceTree = "<group>";
-		};
-		DD3CA019273FA1930050320E /* TabBar */ = {
-			isa = PBXGroup;
-			children = (
-				DD3CA020273FA2AD0050320E /* TabBarController.swift */,
-				DD3CA028273FA3230050320E /* Chatting */,
-				DD3CA025273FA3040050320E /* MyTown */,
-				DD3CA022273FA2C90050320E /* MyPage */,
-			);
-			path = TabBar;
 			sourceTree = "<group>";
 		};
 		DD3CA01A273FA1990050320E /* Home1 */ = {
@@ -330,13 +350,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD1B9DF72740579E007844CB /* MainNavigationController.swift in Sources */,
 				DD3CA024273FA2E00050320E /* MyPageViewController.swift in Sources */,
 				DD3CA02D273FA37D0050320E /* WritingViewController.swift in Sources */,
 				DD3CA02A273FA32F0050320E /* ChattingViewController.swift in Sources */,
 				DD3C9FFE273F96D30050320E /* AppDelegate.swift in Sources */,
+				DD1B9E062740610C007844CB /* Color.swift in Sources */,
 				DD3CA027273FA31B0050320E /* MyTownViewController.swift in Sources */,
 				DD3CA021273FA2AD0050320E /* TabBarController.swift in Sources */,
 				DD3CA01F273FA2750050320E /* Home2ViewController.swift in Sources */,
+				DD1B9DF927405A55007844CB /* BaseNavigationController.swift in Sources */,
+				DD1B9E0427406103007844CB /* Image.swift in Sources */,
 				DD3CA01D273FA2620050320E /* Home1ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
