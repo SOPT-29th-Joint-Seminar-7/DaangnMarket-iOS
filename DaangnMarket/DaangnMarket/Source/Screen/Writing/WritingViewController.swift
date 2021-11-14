@@ -7,6 +7,9 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 final class WritingViewController: UIViewController {
 
     private lazy var closeButton = UIButton().then {
@@ -22,13 +25,24 @@ final class WritingViewController: UIViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 15, weight: .regular)
     }
 
+    private let tableView = UITableView().then {
+        $0.allowsSelection = false
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
+        setDelegation()
+        setLayouts()
     }
 }
 
 extension WritingViewController {
+    private func setDelegation() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+
     private func setNavigationBar() {
         title = "중고거래 글쓰기"
         navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.systemFont(ofSize: 19, weight: .regular)]
@@ -54,6 +68,38 @@ extension WritingViewController {
             dismiss(animated: true, completion: nil)
         default:
             break
+        }
+    }
+}
+
+extension WritingViewController: UITableViewDelegate {
+
+}
+
+extension WritingViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+
+}
+
+extension WritingViewController {
+    func setLayouts() {
+        setViewHierarchies()
+        setConstraints()
+    }
+
+    func setViewHierarchies() {
+        view.addSubview(tableView)
+    }
+
+    func setConstraints() {
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 }
