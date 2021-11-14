@@ -31,6 +31,7 @@
 		DDBA17A2274177D2001E1654 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA17A1274177D2001E1654 /* TagTableViewCell.swift */; };
 		DDBA17A52741780A001E1654 /* TagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA17A42741780A001E1654 /* TagButton.swift */; };
 		DDBA17A727417954001E1654 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA17A627417954001E1654 /* UIButton+.swift */; };
+		DDBA17A92741823C001E1654 /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA17A82741823C001E1654 /* TextViewTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		DDBA17A1274177D2001E1654 /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
 		DDBA17A42741780A001E1654 /* TagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButton.swift; sourceTree = "<group>"; };
 		DDBA17A627417954001E1654 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		DDBA17A82741823C001E1654 /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
 		EC371869C72E8FD0BB44E1D0 /* Pods-DaangnMarket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaangnMarket.debug.xcconfig"; path = "Target Support Files/Pods-DaangnMarket/Pods-DaangnMarket.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -266,6 +268,7 @@
 				DDBA179D27416438001E1654 /* PhotoCollectionViewCell.swift */,
 				DDBA179F27416DCB001E1654 /* TextFieldTableViewCell.swift */,
 				DDBA17A1274177D2001E1654 /* TagTableViewCell.swift */,
+				DDBA17A82741823C001E1654 /* TextViewTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				DDBA179E27416438001E1654 /* PhotoCollectionViewCell.swift in Sources */,
 				DD3C9FFE273F96D30050320E /* AppDelegate.swift in Sources */,
 				DDBA179A274162A1001E1654 /* PhotoTableViewCell.swift in Sources */,
+				DDBA17A92741823C001E1654 /* TextViewTableViewCell.swift in Sources */,
 				DD1B9E062740610C007844CB /* Color.swift in Sources */,
 				DDBA179727416043001E1654 /* UITableView+Reusable.swift in Sources */,
 				DD3CA027273FA31B0050320E /* MyTownViewController.swift in Sources */,
