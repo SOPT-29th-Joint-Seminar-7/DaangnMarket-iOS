@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PhotoCollectionViewCell: UICollectionViewCell {
+final class PhotoCollectionViewCell: UICollectionViewCell {
 
     private let vStackView = UIStackView().then {
         $0.axis = .vertical
@@ -47,18 +47,18 @@ extension PhotoCollectionViewCell {
 }
 
 extension PhotoCollectionViewCell {
-    func setLayouts() {
+    private func setLayouts() {
         setViewHierarchies()
         setConstraints()
     }
 
-    func setViewHierarchies() {
+    private func setViewHierarchies() {
         contentView.addSubview(vStackView)
         vStackView.addArrangedSubview(imageView)
         vStackView.addArrangedSubview(label)
     }
 
-    func setConstraints() {
+    private func setConstraints() {
         vStackView.snp.makeConstraints {
             $0.center.equalToSuperview()
 
