@@ -31,6 +31,7 @@ final class WritingViewController: UIViewController {
         $0.registerReusableCell(PhotoTableViewCell.self)
         $0.registerReusableCell(TextFieldTableViewCell.self)
         $0.registerReusableCell(TagTableViewCell.self)
+        $0.registerReusableCell(TextViewTableViewCell.self)
     }
 
     override func viewDidLoad() {
@@ -38,6 +39,7 @@ final class WritingViewController: UIViewController {
         setNavigationBar()
         setDelegation()
         setLayouts()
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
     }
 }
 
@@ -83,8 +85,12 @@ extension WritingViewController: UITableViewDelegate {
             return 109
         case 1, 2, 3:
             return 64
+        case 4, 5:
+            return 102
+        case 6:
+            return UITableView.automaticDimension
         default:
-            return 100
+            return 0
         }
     }
 }
@@ -142,11 +148,29 @@ extension WritingViewController: UITableViewDataSource {
             cell.makeTagButtons(with: "대면", "택배")
             cell.type = .titleWithSubtitle
             return cell
+        case 6:
+            let cell: TextViewTableViewCell = tableView.dequeueReusableCell(indexPath: indexPath)
+            cell.delegate = self
+            return cell
         default:
             return UITableViewCell()
         }
     }
 
+}
+
+extension WritingViewController: TableViewCellDelegate {
+    func updateTextViewHeight(_ cell: TextViewTableViewCell, _ textView: UITextView) {
+        let size = textView.bounds.size
+            let newSize = tableView.sizeThatFits(CGSize(width: size.width,
+                                                        height: CGFloat.greatestFiniteMagnitude))
+            if size.height != newSize.height {
+                UIView.setAnimationsEnabled(false)
+                tableView.beginUpdates()
+                tableView.endUpdates()
+                UIView.setAnimationsEnabled(true)
+            }
+    }
 }
 
 extension WritingViewController {

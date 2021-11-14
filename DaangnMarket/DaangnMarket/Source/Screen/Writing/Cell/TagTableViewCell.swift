@@ -21,7 +21,7 @@ enum TagTableViewCellType {
     }
 }
 
-class TagTableViewCell: UITableViewCell {
+final class TagTableViewCell: UITableViewCell {
 
     public var type: TagTableViewCellType = .title {
         didSet {
