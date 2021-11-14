@@ -28,6 +28,9 @@
 		DDBA179C27416365001E1654 /* UICollectionView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA179B27416365001E1654 /* UICollectionView+Reusable.swift */; };
 		DDBA179E27416438001E1654 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA179D27416438001E1654 /* PhotoCollectionViewCell.swift */; };
 		DDBA17A027416DCB001E1654 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA179F27416DCB001E1654 /* TextFieldTableViewCell.swift */; };
+		DDBA17A2274177D2001E1654 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA17A1274177D2001E1654 /* TagTableViewCell.swift */; };
+		DDBA17A52741780A001E1654 /* TagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA17A42741780A001E1654 /* TagButton.swift */; };
+		DDBA17A727417954001E1654 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA17A627417954001E1654 /* UIButton+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +58,9 @@
 		DDBA179B27416365001E1654 /* UICollectionView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Reusable.swift"; sourceTree = "<group>"; };
 		DDBA179D27416438001E1654 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDBA179F27416DCB001E1654 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		DDBA17A1274177D2001E1654 /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
+		DDBA17A42741780A001E1654 /* TagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButton.swift; sourceTree = "<group>"; };
+		DDBA17A627417954001E1654 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		EC371869C72E8FD0BB44E1D0 /* Pods-DaangnMarket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaangnMarket.debug.xcconfig"; path = "Target Support Files/Pods-DaangnMarket/Pods-DaangnMarket.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +190,7 @@
 		DD3CA015273F97C20050320E /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				DDBA17A3274177FB001E1654 /* Component */,
 				DD1B9DF527405758007844CB /* Base */,
 				DD3CA02B273FA36B0050320E /* Writing */,
 				DD3CA01A273FA1990050320E /* Home1 */,
@@ -247,6 +254,7 @@
 				DDBA179427415FED001E1654 /* UIView+.swift */,
 				DDBA179627416043001E1654 /* UITableView+Reusable.swift */,
 				DDBA179B27416365001E1654 /* UICollectionView+Reusable.swift */,
+				DDBA17A627417954001E1654 /* UIButton+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -257,8 +265,17 @@
 				DDBA1799274162A1001E1654 /* PhotoTableViewCell.swift */,
 				DDBA179D27416438001E1654 /* PhotoCollectionViewCell.swift */,
 				DDBA179F27416DCB001E1654 /* TextFieldTableViewCell.swift */,
+				DDBA17A1274177D2001E1654 /* TagTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		DDBA17A3274177FB001E1654 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				DDBA17A42741780A001E1654 /* TagButton.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,7 +410,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD1B9DF72740579E007844CB /* MainNavigationController.swift in Sources */,
+				DDBA17A727417954001E1654 /* UIButton+.swift in Sources */,
 				DD3CA024273FA2E00050320E /* MyPageViewController.swift in Sources */,
+				DDBA17A52741780A001E1654 /* TagButton.swift in Sources */,
 				DD3CA02D273FA37D0050320E /* WritingViewController.swift in Sources */,
 				DD3CA02A273FA32F0050320E /* ChattingViewController.swift in Sources */,
 				DDBA179E27416438001E1654 /* PhotoCollectionViewCell.swift in Sources */,
@@ -406,6 +425,7 @@
 				DD3CA01F273FA2750050320E /* Home2ViewController.swift in Sources */,
 				DD1B9DF927405A55007844CB /* BaseNavigationController.swift in Sources */,
 				DDBA179527415FED001E1654 /* UIView+.swift in Sources */,
+				DDBA17A2274177D2001E1654 /* TagTableViewCell.swift in Sources */,
 				DDBA179C27416365001E1654 /* UICollectionView+Reusable.swift in Sources */,
 				DDBA17A027416DCB001E1654 /* TextFieldTableViewCell.swift in Sources */,
 				DD1B9E0427406103007844CB /* Image.swift in Sources */,
