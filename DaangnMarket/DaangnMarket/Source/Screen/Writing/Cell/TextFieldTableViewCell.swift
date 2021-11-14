@@ -26,7 +26,7 @@ final class TextFieldTableViewCell: UITableViewCell {
     private lazy var checkButton = UIButton(type: .custom).then {
         $0.titleLabel?.font = .systemFont(ofSize: 12)
         $0.setTitle("가격 제안받기", for: .normal)
- 
+
         $0.setTitleColor(Color.daangnBlack1, for: .selected)
         $0.setTitleColor(Color.daangnGray4, for: .normal)
 
