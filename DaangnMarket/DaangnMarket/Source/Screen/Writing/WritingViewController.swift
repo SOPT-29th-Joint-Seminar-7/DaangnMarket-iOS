@@ -34,16 +34,36 @@ final class WritingViewController: UIViewController {
         $0.registerReusableCell(TextViewTableViewCell.self)
     }
 
+    private let wordButton = UIButton().then {
+        $0.setTitle("자주 쓰는 문구", for: .normal)
+        $0.setImage(Image.frequentlyIcon, for: .normal)
+    }
+
+    private let townButton = UIButton().then {
+        $0.setTitle("보여줄 동네 설정", for: .normal)
+        $0.setImage(Image.neighborSettingIcon, for: .normal)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         setDelegation()
         setLayouts()
+        setToolbar()
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
     }
 }
 
 extension WritingViewController {
+    private func setToolbar() {
+        navigationController?.isToolbarHidden = false
+        navigationController?.toolbar.barTintColor = .white
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let fixedSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
+        fixedSpace.width = 10
+        setToolbarItems([makeToolBarButtonItem(with: wordButton), fixedSpace, makeToolBarButtonItem(with: townButton), flexibleSpace], animated: true)
+    }
+
     private func setDelegation() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -59,6 +79,18 @@ extension WritingViewController {
     private func makeBarButtonItem(with button: UIButton) -> UIBarButtonItem {
         button.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         button.addTarget(self, action: #selector(buttonDidTapped(_:)), for: .touchUpInside)
+        return UIBarButtonItem(customView: button)
+    }
+
+    private func makeToolBarButtonItem(with button: UIButton) -> UIBarButtonItem {
+        button.titleLabel?.font = .systemFont(ofSize: 12, weight: .semibold)
+        button.setTitleColor(Color.daangnBlack1, for: .normal)
+        button.addTarget(self, action: #selector(buttonDidTapped(_:)), for: .touchUpInside)
+
+        let spacing: CGFloat = 6
+        button.contentEdgeInsets =  UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -spacing, bottom: 0, right: spacing)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: -spacing)
         return UIBarButtonItem(customView: button)
     }
 }
@@ -180,12 +212,13 @@ extension WritingViewController {
     }
 
     func setViewHierarchies() {
-        view.addSubview(tableView)
+        view.addSubviews(tableView)
     }
 
     func setConstraints() {
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+
     }
 }
