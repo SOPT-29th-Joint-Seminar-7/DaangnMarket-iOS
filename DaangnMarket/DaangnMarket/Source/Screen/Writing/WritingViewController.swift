@@ -103,6 +103,28 @@ extension WritingViewController: UITableViewDataSource {
             cell.type = .plain
             cell.setPlaceholder(with: "글 제목")
             return cell
+        case 2:
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "카테고리 선택"
+            cell.textLabel?.font = .systemFont(ofSize: 15)
+            cell.textLabel?.snp.makeConstraints {
+                $0.centerY.equalToSuperview()
+                $0.leading.equalToSuperview().inset(16)
+            }
+
+            let arrowImageView = UIImageView().then {
+                $0.image = UIImage(systemName: "chevron.right")
+                $0.contentMode = .scaleAspectFit
+                $0.tintColor = .black
+            }
+            cell.contentView.addSubview(arrowImageView)
+            arrowImageView.snp.makeConstraints {
+                $0.height.equalTo(16)
+                $0.centerY.equalToSuperview()
+                $0.trailing.equalToSuperview().inset(16)
+            }
+
+            return cell
         case 3:
             let cell: TextFieldTableViewCell = tableView.dequeueReusableCell(indexPath: indexPath)
             cell.type = .button
