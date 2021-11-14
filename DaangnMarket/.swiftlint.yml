@@ -2,3 +2,6 @@ excluded: # 린트 과정에서 무시할 파일 경로. `included`보다 우선
 - Pods
 - DaangnMarket/Source/Support
 
+disabled_rules: # rule identifiers to exclude from running
+  - line_length
+  - function_body_length
