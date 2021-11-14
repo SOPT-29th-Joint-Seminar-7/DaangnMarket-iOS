@@ -24,6 +24,9 @@
 		DD3CA02D273FA37D0050320E /* WritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3CA02C273FA37D0050320E /* WritingViewController.swift */; };
 		DDBA179527415FED001E1654 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA179427415FED001E1654 /* UIView+.swift */; };
 		DDBA179727416043001E1654 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA179627416043001E1654 /* UITableView+Reusable.swift */; };
+		DDBA179A274162A1001E1654 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA1799274162A1001E1654 /* PhotoTableViewCell.swift */; };
+		DDBA179C27416365001E1654 /* UICollectionView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA179B27416365001E1654 /* UICollectionView+Reusable.swift */; };
+		DDBA179E27416438001E1654 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA179D27416438001E1654 /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,9 @@
 		DD3CA02C273FA37D0050320E /* WritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingViewController.swift; sourceTree = "<group>"; };
 		DDBA179427415FED001E1654 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		DDBA179627416043001E1654 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
+		DDBA1799274162A1001E1654 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		DDBA179B27416365001E1654 /* UICollectionView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Reusable.swift"; sourceTree = "<group>"; };
+		DDBA179D27416438001E1654 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		EC371869C72E8FD0BB44E1D0 /* Pods-DaangnMarket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaangnMarket.debug.xcconfig"; path = "Target Support Files/Pods-DaangnMarket/Pods-DaangnMarket.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -228,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				DD3CA02C273FA37D0050320E /* WritingViewController.swift */,
+				DDBA179827416289001E1654 /* Cell */,
 			);
 			path = Writing;
 			sourceTree = "<group>";
@@ -237,8 +244,18 @@
 			children = (
 				DDBA179427415FED001E1654 /* UIView+.swift */,
 				DDBA179627416043001E1654 /* UITableView+Reusable.swift */,
+				DDBA179B27416365001E1654 /* UICollectionView+Reusable.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		DDBA179827416289001E1654 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DDBA1799274162A1001E1654 /* PhotoTableViewCell.swift */,
+				DDBA179D27416438001E1654 /* PhotoCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,7 +393,9 @@
 				DD3CA024273FA2E00050320E /* MyPageViewController.swift in Sources */,
 				DD3CA02D273FA37D0050320E /* WritingViewController.swift in Sources */,
 				DD3CA02A273FA32F0050320E /* ChattingViewController.swift in Sources */,
+				DDBA179E27416438001E1654 /* PhotoCollectionViewCell.swift in Sources */,
 				DD3C9FFE273F96D30050320E /* AppDelegate.swift in Sources */,
+				DDBA179A274162A1001E1654 /* PhotoTableViewCell.swift in Sources */,
 				DD1B9E062740610C007844CB /* Color.swift in Sources */,
 				DDBA179727416043001E1654 /* UITableView+Reusable.swift in Sources */,
 				DD3CA027273FA31B0050320E /* MyTownViewController.swift in Sources */,
@@ -384,6 +403,7 @@
 				DD3CA01F273FA2750050320E /* Home2ViewController.swift in Sources */,
 				DD1B9DF927405A55007844CB /* BaseNavigationController.swift in Sources */,
 				DDBA179527415FED001E1654 /* UIView+.swift in Sources */,
+				DDBA179C27416365001E1654 /* UICollectionView+Reusable.swift in Sources */,
 				DD1B9E0427406103007844CB /* Image.swift in Sources */,
 				DD3CA01D273FA2620050320E /* Home1ViewController.swift in Sources */,
 			);
