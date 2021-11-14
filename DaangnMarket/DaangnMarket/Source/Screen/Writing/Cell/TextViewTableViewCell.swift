@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TableViewCellDelegate: AnyObject {
-    func updateTextViewHeight(_ cell:TextViewTableViewCell, _ textView:UITextView)
+    func updateTextViewHeight(_ cell: TextViewTableViewCell, _ textView: UITextView)
 }
 
 final class TextViewTableViewCell: UITableViewCell {
