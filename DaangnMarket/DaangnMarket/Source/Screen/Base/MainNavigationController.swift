@@ -9,7 +9,7 @@ import UIKit
 
 import Then
 
-class MainNavigationController: BaseNavigationController {
+final class MainNavigationController: BaseNavigationController {
 
     // MARK: - Properties
     private lazy var logoItem = UIBarButtonItem().then {

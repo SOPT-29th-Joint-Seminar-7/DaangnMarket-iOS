@@ -32,8 +32,7 @@ extension BaseNavigationController {
         appearance.shadowColor = Color.daangnGray1
 
         navigationBar.standardAppearance = appearance
-        navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
+        navigationBar.scrollEdgeAppearance = appearance
         navigationBar.tintColor = .black
-
     }
 }
