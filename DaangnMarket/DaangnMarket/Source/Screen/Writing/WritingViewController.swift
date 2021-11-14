@@ -25,8 +25,10 @@ final class WritingViewController: UIViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 15, weight: .regular)
     }
 
-    private let tableView = UITableView().then {
+    private lazy var tableView = UITableView().then {
         $0.allowsSelection = false
+        $0.registerReusableCell(PhotoTableViewCell.self)
+        $0.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
 
     override func viewDidLoad() {
@@ -73,7 +75,14 @@ extension WritingViewController {
 }
 
 extension WritingViewController: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            return 109
+        default:
+            return 100
+        }
+    }
 }
 
 extension WritingViewController: UITableViewDataSource {
@@ -82,7 +91,13 @@ extension WritingViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        switch indexPath.row {
+        case 0:
+            let cell: PhotoTableViewCell = tableView.dequeueReusableCell(indexPath: indexPath)
+            return cell
+        default:
+            return UITableViewCell()
+        }
     }
 
 }
