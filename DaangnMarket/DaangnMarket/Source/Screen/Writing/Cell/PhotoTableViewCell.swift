@@ -63,7 +63,6 @@ extension PhotoTableViewCell: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 31, left: 16, bottom: 18, right: 0)
     }
 
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
