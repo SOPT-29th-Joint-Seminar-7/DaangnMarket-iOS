@@ -155,8 +155,8 @@
 		DD3CA011273F96FB0050320E /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				DDBA179327415FE0001E1654 /* Extension */,
 				DD3CA014273F97B40050320E /* Support */,
+				DDBA179327415FE0001E1654 /* Extension */,
 				DD3CA015273F97C20050320E /* Screen */,
 			);
 			path = Source;
