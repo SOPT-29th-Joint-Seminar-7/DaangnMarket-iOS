@@ -31,6 +31,7 @@ class Home1ViewController: UIViewController {
         let spacing: CGFloat = 4
         $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -spacing, bottom: 0, right: spacing)
         $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: -spacing)
+        $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
     }
     
     private let filterButton = UIButton().then {
@@ -43,6 +44,7 @@ class Home1ViewController: UIViewController {
         let spacing: CGFloat = 4
         $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -spacing, bottom: 0, right: spacing)
         $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: -spacing)
+        $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
     }
 
     override func viewDidLoad() {
@@ -87,27 +89,25 @@ extension Home1ViewController {
     
     func setViewHierarchies() {
         view.addSubviews(tableView)
-        headerView.addSubviews(sortButton)
-        headerView.addSubviews(filterButton)
+        headerView.addSubviews(sortButton, filterButton)
     }
     
     func setConstraints() {
         tableView.snp.makeConstraints{
-            $0.top.bottom.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.edges.equalToSuperview()
         }
         
         filterButton.snp.makeConstraints{
             $0.trailing.equalToSuperview().inset(16)
-            $0.bottom.equalTo(headerView.snp.bottom).inset(10)
             $0.width.equalTo(50)
             $0.height.equalTo(20)
+            $0.centerY.equalTo(headerView.snp.centerY)
         }
         sortButton.snp.makeConstraints{
             $0.trailing.equalTo(filterButton.snp.leading).offset(-6)
-            $0.bottom.equalTo(headerView.snp.bottom).inset(10)
             $0.width.equalTo(60)
             $0.height.equalTo(20)
+            $0.centerY.equalTo(headerView.snp.centerY)
         }
         
     }
