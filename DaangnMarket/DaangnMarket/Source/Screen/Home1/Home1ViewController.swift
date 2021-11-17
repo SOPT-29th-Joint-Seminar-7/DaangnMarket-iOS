@@ -114,7 +114,7 @@ extension Home1ViewController {
     }
 
     func setConstraints() {
-        tableView.snp.makeConstraints {
+        tableView.snp.makeConstraints{
             $0.edges.equalToSuperview()
         }
 
