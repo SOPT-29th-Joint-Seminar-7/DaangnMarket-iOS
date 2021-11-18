@@ -50,6 +50,7 @@ class Home1ViewController: UIViewController {
     
     private let plusButton = UIButton().then {
         $0.setImage(Image.createButtonImage, for: .normal)
+        $0.addTarget(self, action: #selector(buttonDidTapped(_:)), for: .touchUpInside)
     }
     
     private var itemList: [Item] = []
@@ -104,6 +105,14 @@ extension Home1ViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(indexPath: indexPath) as ItemTableViewCell
         cell.updateData(data: itemList[indexPath.row])
         return cell
+    }
+}
+
+extension Home1ViewController {
+    @objc
+    private func buttonDidTapped(_ sender: UIButton) {
+        let writingVC = WritingViewController()
+        self.navigationController?.pushViewController(writingVC, animated: true)
     }
 }
 
