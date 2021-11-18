@@ -13,8 +13,9 @@ import Then
 class Home1ViewController: UIViewController {
 
     private lazy var tableView = UITableView().then {
+        $0.registerReusableCell(ItemTableViewCell.self)
         $0.separatorColor = Color.daangnGray1
-        $0.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        $0.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
     
     private let headerView = UIView().then {
@@ -46,11 +47,14 @@ class Home1ViewController: UIViewController {
         $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: -spacing)
         $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
     }
+    
+    private var itemList: [Item] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayouts()
         setDelegation()
+        updateData()
     }
 }
 
@@ -59,25 +63,38 @@ extension Home1ViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    private func updateData() {
+        let itemList = ItemListModel()
+        self.itemList = itemList.getItemListModel()
+    }
 }
 
 extension Home1ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 130
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return headerView
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
-        
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 셀 선택시 회색으로 바뀌는 효과 해제 
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
 extension Home1ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return itemList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(indexPath: indexPath) as ItemTableViewCell
+        cell.updateData(data: itemList[indexPath.row])
+        return cell
     }
 }
 
