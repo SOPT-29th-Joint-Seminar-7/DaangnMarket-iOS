@@ -37,6 +37,16 @@ class ItemTableViewCell: UITableViewCell {
         $0.font = .systemFont(ofSize: 14, weight: .medium)
     }
     
+    private let likeIconImage = UIImageView().then {
+        $0.image = Image.likeIcon
+        $0.clipsToBounds = true
+    }
+    
+    private let likeNumberLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 12, weight: .regular)
+        $0.textColor = Color.daangnGray4
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setLayouts()
@@ -52,6 +62,7 @@ class ItemTableViewCell: UITableViewCell {
         itemTitleLabel.text = data.itemTitle
         itemDescriptionLabel.text = "\(data.location) · \(data.uploadDate) 전"
         itemPriceLabel.text = "\(data.itemPrice)원"
+        likeNumberLabel.text = "\(data.likeNumber)"
     }
 }
 
@@ -86,7 +97,7 @@ extension ItemTableViewCell {
     }
     
     private func setViewHierarchies() {
-        contentView.addSubviews(itemImageView, hStackView, itemTitleLabel, itemDescriptionLabel, itemPriceLabel)
+        contentView.addSubviews(itemImageView, hStackView, itemTitleLabel, itemDescriptionLabel, itemPriceLabel, likeIconImage, likeNumberLabel)
     }
     
     private func setConstraints() {
@@ -117,6 +128,17 @@ extension ItemTableViewCell {
             $0.top.equalTo(itemDescriptionLabel.snp.bottom).offset(9)
             $0.leading.equalTo(itemImageView.snp.trailing).offset(10)
             $0.bottom.equalToSuperview().inset(23)
+        }
+        
+        likeIconImage.snp.makeConstraints {
+            $0.width.equalTo(likeIconImage.snp.height).multipliedBy(1.0 / 1.0)
+            $0.trailing.equalTo(likeNumberLabel.snp.leading).offset(-3)
+            $0.bottom.equalToSuperview().inset(20)
+        }
+        
+        likeNumberLabel.snp.makeConstraints{
+            $0.trailing.equalToSuperview().inset(30)
+            $0.bottom.equalToSuperview().inset(18)
         }
     }
 }

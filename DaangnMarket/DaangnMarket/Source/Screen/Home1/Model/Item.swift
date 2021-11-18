@@ -14,4 +14,5 @@ struct Item {
     let location: String
     let uploadDate: String
     let itemPrice: String
+    let likeNumber: Int
 }
