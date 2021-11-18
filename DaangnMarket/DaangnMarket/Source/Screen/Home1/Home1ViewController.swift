@@ -48,6 +48,10 @@ class Home1ViewController: UIViewController {
         $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
     }
     
+    private let plusButton = UIButton().then {
+        $0.setImage(Image.createButtonImage, for: .normal)
+    }
+    
     private var itemList: [Item] = []
 
     private var itemList: [Item] = []
@@ -110,7 +114,8 @@ extension Home1ViewController {
     }
 
     func setViewHierarchies() {
-        view.addSubviews(tableView)
+        view.addSubviews(tableView, plusButton)
+        self.view.bringSubviewToFront(plusButton)
         headerView.addSubviews(sortButton, filterButton)
     }
 
@@ -131,6 +136,12 @@ extension Home1ViewController {
             $0.height.equalTo(20)
             $0.centerY.equalTo(headerView.snp.centerY)
         }
-
+        
+        plusButton.snp.makeConstraints {
+            $0.width.equalTo(plusButton.snp.height).multipliedBy(1.0 / 1.0)
+            $0.trailing.equalToSuperview().inset(21)
+            $0.bottom.equalToSuperview().inset(103)
+        }
+        
     }
 }
