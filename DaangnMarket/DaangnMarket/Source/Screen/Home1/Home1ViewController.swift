@@ -47,6 +47,8 @@ class Home1ViewController: UIViewController {
         $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: -spacing)
         $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
     }
+    
+    private var itemList: [Item] = []
 
     private var itemList: [Item] = []
 
@@ -85,9 +87,6 @@ extension Home1ViewController: UITableViewDelegate {
         // 셀 선택시 회색으로 바뀌는 효과 해제 
         tableView.deselectRow(at: indexPath, animated: true)
     }
-//    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//
-//    }
 }
 
 extension Home1ViewController: UITableViewDataSource {
