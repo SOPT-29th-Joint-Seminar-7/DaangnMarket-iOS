@@ -55,10 +55,6 @@ class Home1ViewController: UIViewController {
     
     private var itemList: [Item] = []
 
-    private var itemList: [Item] = []
-
-    private var itemList: [Item] = []
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayouts()
