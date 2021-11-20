@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct Item {
-    let itemImage: String
+    let itemImageName: String
     let itemTitle: String
     let location: String
     let uploadDate: String
