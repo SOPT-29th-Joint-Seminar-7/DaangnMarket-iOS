@@ -108,7 +108,7 @@ extension Home1ViewController {
     @objc
     private func buttonDidTapped(_ sender: UIButton) {
         let writingVC = WritingViewController()
-        self.navigationController?.pushViewController(writingVC, animated: true)
+        navigationController?.pushViewController(writingVC, animated: true)
     }
 }
 
@@ -120,7 +120,6 @@ extension Home1ViewController {
 
     func setViewHierarchies() {
         view.addSubviews(tableView, plusButton)
-        self.view.bringSubviewToFront(plusButton)
         headerView.addSubviews(sortButton, filterButton)
     }
 
@@ -143,7 +142,7 @@ extension Home1ViewController {
         }
         
         plusButton.snp.makeConstraints {
-            $0.width.equalTo(plusButton.snp.height).multipliedBy(1.0 / 1.0)
+            $0.width.equalTo(plusButton.snp.height)
             $0.trailing.equalToSuperview().inset(21)
             $0.bottom.equalToSuperview().inset(103)
         }
