@@ -16,6 +16,10 @@ class Home1ViewController: UIViewController {
         $0.registerReusableCell(ItemTableViewCell.self)
         $0.separatorColor = Color.daangnGray1
         $0.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        /// iOS 15 부터 적용 : sectionHeaderTopPadding을 0으로 주면 구분선이 사라지고 1로 주면 생김.
+        if #available(iOS 15, *) {
+            $0.sectionHeaderTopPadding = 0
+        }
     }
 
     private let headerView = UIView().then {
@@ -84,7 +88,7 @@ extension Home1ViewController: UITableViewDelegate {
         return headerView
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
+        return 35
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 셀 선택시 회색으로 바뀌는 효과 해제 
