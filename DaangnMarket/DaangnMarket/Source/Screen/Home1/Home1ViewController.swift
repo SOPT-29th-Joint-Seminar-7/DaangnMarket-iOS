@@ -140,12 +140,12 @@ extension Home1ViewController {
             $0.height.equalTo(20)
             $0.centerY.equalTo(headerView.snp.centerY)
         }
-        
+
         plusButton.snp.makeConstraints {
             $0.width.equalTo(plusButton.snp.height)
             $0.trailing.equalToSuperview().inset(21)
             $0.bottom.equalToSuperview().inset(103)
         }
-        
+
     }
 }
