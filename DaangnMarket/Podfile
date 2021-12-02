@@ -10,5 +10,6 @@ target 'DaangnMarket' do
 	pod 'Then'
 	pod 'Moya'
 	pod 'SwiftLint'
+	pod 'Kingfisher', '~> 7.0'
 
 end
