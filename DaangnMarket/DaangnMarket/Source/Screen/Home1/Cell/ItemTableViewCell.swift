@@ -9,11 +9,15 @@ import UIKit
 
 import SnapKit
 import Then
+import Kingfisher
 
 class ItemTableViewCell: UITableViewCell {
     private let itemImageView = UIImageView().then {
         $0.image = Image.photoIcon
-        $0.contentMode = .scaleAspectFit
+        $0.layer.cornerRadius = 5
+        $0.clipsToBounds = true
+        $0.contentMode = .scaleToFill
+
     }
 
     private let hStackView = UIStackView().then {
@@ -67,12 +71,19 @@ class ItemTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func updateData(data: Item) {
-        itemImageView.image = UIImage(named: data.itemImageName)
-        itemTitleLabel.text = data.itemTitle
-        itemDescriptionLabel.text = "\(data.location) · \(data.uploadDate) 전"
-        itemPriceLabel.text = "\(data.itemPrice)원"
-        likeNumberLabel.text = "\(data.likeNumber)"
+    override func prepareForReuse() {
+        itemImageView.image = nil
+        itemTitleLabel.text = ""
+    }
+
+    func updateData(data: HomeItemData) {
+        let url = URL(string: data.img)
+        itemImageView.kf.setImage(with: url)
+
+        itemTitleLabel.text = data.title
+        itemDescriptionLabel.text = "\(data.address) · 3일전"
+        itemPriceLabel.text = "\(data.price)원"
+        likeNumberLabel.text = "7"
     }
 }
 
@@ -101,7 +112,7 @@ extension ItemTableViewCell {
 
         hStackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(21)
-            $0.leading.equalTo(itemImageView.snp.trailing).offset(10)
+            $0.leading.equalTo(itemImageView.snp.trailing).offset(15)
             $0.height.equalTo(19)
         }
 
@@ -114,17 +125,17 @@ extension ItemTableViewCell {
 
         itemTitleLabel.snp.makeConstraints {
             $0.top.equalTo(hStackView.snp.bottom).offset(3)
-            $0.leading.equalTo(itemImageView.snp.trailing).offset(10)
+            $0.leading.equalTo(itemImageView.snp.trailing).offset(15)
         }
 
         itemDescriptionLabel.snp.makeConstraints {
             $0.top.equalTo(itemTitleLabel.snp.bottom).offset(0)
-            $0.leading.equalTo(itemImageView.snp.trailing).offset(10)
+            $0.leading.equalTo(itemImageView.snp.trailing).offset(15)
         }
 
         itemPriceLabel.snp.makeConstraints {
             $0.top.equalTo(itemDescriptionLabel.snp.bottom).offset(9)
-            $0.leading.equalTo(itemImageView.snp.trailing).offset(10)
+            $0.leading.equalTo(itemImageView.snp.trailing).offset(15)
             $0.bottom.equalToSuperview().inset(23)
         }
 

@@ -9,8 +9,13 @@ import UIKit
 
 import SnapKit
 import Then
+import Moya
 
 class Home1ViewController: UIViewController {
+
+    private let service = MoyaProvider<HomeService>()
+    var itemData: HomeItem?
+    private var itemList: [HomeItemData] = []
 
     private lazy var tableView = UITableView().then {
         $0.registerReusableCell(ItemTableViewCell.self)
@@ -56,14 +61,31 @@ class Home1ViewController: UIViewController {
         $0.setImage(Image.createButtonImage, for: .normal)
         $0.addTarget(self, action: #selector(buttonDidTapped(_:)), for: .touchUpInside)
     }
-    
-    private var itemList: [Item] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayouts()
         setDelegation()
-        updateData()
+        getItemData()
+    }
+
+    // Network
+    func getItemData() {
+        service.request(.getItemData) { [weak self] response in
+            switch response {
+            case .success(let result):
+                do {
+                    self?.itemData = try result.map(HomeItem.self)
+                    self?.itemList = self?.itemData?.data ?? []
+                    print("itemList", self?.itemList ?? [])
+                    self?.tableView.reloadData()
+                } catch(let err) {
+                    print(err.localizedDescription)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
     }
 
 }
@@ -72,11 +94,6 @@ extension Home1ViewController {
     private func setDelegation() {
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    private func updateData() {
-        let itemList = ItemListModel()
-        self.itemList = itemList.getItemListModel()
     }
 }
 
