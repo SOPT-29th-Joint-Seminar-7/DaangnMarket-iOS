@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct GeneralAPI {
+struct GeneralAPI2 {
     static let baseURL = "https://asia-northeast3-daangnmarket-wesopt.cloudfunctions.net/api"
 }

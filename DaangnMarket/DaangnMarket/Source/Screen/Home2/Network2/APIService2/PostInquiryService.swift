@@ -16,7 +16,7 @@ enum PostInquiryService {
 extension PostInquiryService: TargetType {
 
     var baseURL: URL {
-        return URL(string: GeneralAPI.baseURL)!
+        return URL(string: GeneralAPI2.baseURL)!
     }
 
     var path: String {
