@@ -18,49 +18,49 @@ import SnapKit
 import Then
 
 class ProductTableViewCell: UITableViewCell {
-    private let productImageView = UIImageView().then {
+    var productImageView = UIImageView().then {
         $0.image = Image.photoIcon
         $0.contentMode = .scaleAspectFit
     }
 
-    private let statusStackView = UIStackView().then {
+    let statusStackView = UIStackView().then {
         $0.axis = .horizontal
         $0.spacing = 4
         $0.alignment = .leading
         $0.distribution = .fill
     }
 
-    private let productStatusButton = TagButton().then {
+    let productStatusButton = TagButton().then {
         $0.titleLabel?.font = .systemFont(ofSize: 10, weight: .bold)
         $0.layer.cornerRadius = 10
         $0.setText(with: "중고", state: .selected)
     }
 
-    private let tradeStatusButton = TagButton().then {
+    let tradeStatusButton = TagButton().then {
         $0.titleLabel?.font = .systemFont(ofSize: 10, weight: .bold)
         $0.layer.cornerRadius = 10
         $0.setText(with: "택배", state: .normal)
     }
 
-    private let productTitleLabel = UILabel().then {
+    let productTitleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
     }
 
-    private let productSubTatleLabel = UILabel().then {
+    let productSubTatleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 12, weight: .regular)
         $0.textColor = Color.daangnGray3
     }
 
-    private let productPriceLabel = UILabel().then {
+    let productPriceLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .medium)
     }
 
-    private let likeIconImageView = UIImageView().then {
+    let likeIconImageView = UIImageView().then {
         $0.image = Image.likeIcon
         $0.clipsToBounds = true
     }
 
-    private let likeCountLabel = UILabel().then {
+    let likeCountLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 12, weight: .regular)
         $0.textColor = Color.daangnGray4
     }
@@ -86,6 +86,7 @@ class ProductTableViewCell: UITableViewCell {
             likeCountLabel.text = "\(data.likeNumber)"
         }
     }
+
 }
 
 extension ProductTableViewCell {

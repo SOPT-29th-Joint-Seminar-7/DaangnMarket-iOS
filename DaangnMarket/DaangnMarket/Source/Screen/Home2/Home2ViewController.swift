@@ -22,7 +22,7 @@
  - [o] 중고 버튼은 스택뷰로 구현
  - [o] 하트 0개일 때는 숨기기
  - [x] 0번째 셀 구분선 삭제
- - task 브랜치는 총 4개 만들기 예시) task/#18-ItemTableView
+ - task 브랜치는 총 4개 만들기 예시) task/#18-ItemTableView    feat/#26-ServerAPI
  - task 하나 완성할 때마다 draft PR 날려서 리뷰 받기
  - 테이블뷰셀
  init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -42,6 +42,8 @@ import UIKit
 
 import SnapKit
 import Then
+import Moya
+import Kingfisher
 
 class Home2ViewController: UIViewController {
 
@@ -86,24 +88,46 @@ class Home2ViewController: UIViewController {
 
     private var itemList: [Item] = []
 
+    let provider = MoyaProvider<PostInquiryService>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        notificationCenterReload()
+        productInquiry()
         setLayouts()
-        setDelegation()
         updateData()
+        setDelegation()
+        print("---> 첫번째 \(GlobalValue.shared.productListData)")
+        tableView.reloadData()
     }
 }
 
+// MARK: Set 함수
 extension Home2ViewController {
+
     private func setDelegation() {
-        tableView.delegate = self
-        tableView.dataSource = self
+            tableView.delegate = self
+            tableView.dataSource = self
     }
 
     private func updateData() {
         let itemList = ItemListModel()
         self.itemList = itemList.getItemListModel()
     }
+    
+    func notificationCenterReload() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(notificationAction),
+                                               name: NSNotification.Name("reload"),
+                                               object: nil)
+    }
+    
+    @objc func notificationAction(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
 }
 
 extension Home2ViewController: UITableViewDelegate {
@@ -124,24 +148,53 @@ extension Home2ViewController: UITableViewDelegate {
 
 extension Home2ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemList.count
+
+        
+        switch GlobalValue.shared.productListData?.data.count {
+        case nil:
+            return 0
+        default:
+            return GlobalValue.shared.productListData!.data.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(indexPath: indexPath) as ProductTableViewCell
-        cell.updateData(data: itemList[indexPath.row])
-        // 안 되네
-        switch indexPath.row {
-        case 0:
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            return cell
-        case 1, 2:
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 17, bottom: 0, right: 30)
-            return cell
+
+        switch GlobalValue.shared.productListData?.data.count {
+        case nil:
+            return UITableViewCell()
         default:
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 17, bottom: 0, right: 30)
+            // 이미지뷰
+            let url = URL(string: "\(String(describing: GlobalValue.shared.productListData?.data[indexPath.row].img))")
+            do {
+                let data = try Data(contentsOf: url!)
+                cell.productImageView.image = UIImage(data: data)
+            } catch { }
+
+            cell.productTitleLabel.text = GlobalValue.shared.productListData?.data[indexPath.row].title
+            cell.productSubTatleLabel.text = GlobalValue.shared.productListData?.data[indexPath.row].address
+
+            cell.productPriceLabel.text = "\(GlobalValue.shared.productListData?.data[indexPath.row].price)"
             return cell
+
         }
+        
+        
+
+        //
+        
+        // cell.productStatusButton.text = GlobalValue.shared.productListData?.data[indexPath.row].
+        // cell.tradeStatusButton
+        
+        cell.likeIconImageView.image = Image.likeIcon
+//        cell.likeCountLabel = GlobalValue.shared.productListData?.data[indexPath.row].
+
+//        cell.updateData(data: itemList[indexPath.row])
+
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 17, bottom: 0, right: 30)
+        return cell
+
     }
 }
 
@@ -188,4 +241,26 @@ extension Home2ViewController {
             $0.bottom.equalToSuperview().inset(103)
         }
     }
+}
+
+// MARK: Network
+extension Home2ViewController {
+
+           // signUp 함수
+       func productInquiry() {
+           provider.request(.postInquiry) { response in
+               switch response {
+               case .success(let result):
+                   do {
+                       GlobalValue.shared.productListData = try result.map(PostInquiryDataModel.self)
+                       NotificationCenter.default.post(name: NSNotification.Name("reload"),
+                                                       object: nil)
+                   } catch(let err) {
+                       print("---> catch 실패 \(err.localizedDescription)")
+                   }
+               case .failure(let err):
+                   print("---> 실패 \(err.localizedDescription)")
+               }
+           }
+       }
 }
