@@ -134,13 +134,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		522C4B7B2757A15400C4E4DF /* Network */ = {
+		522C4B7B2757A15400C4E4DF /* Network2 */ = {
 			isa = PBXGroup;
 			children = (
 				522C4B7D2757A17A00C4E4DF /* APIService */,
 				522C4B7C2757A17000C4E4DF /* Manager */,
 			);
-			path = Network;
+			path = Network2;
 			sourceTree = "<group>";
 		};
 		522C4B7C2757A17000C4E4DF /* Manager */ = {
@@ -309,7 +309,7 @@
 				522C4B842757A9D500C4E4DF /* Model */,
 				DD3CA01E273FA2750050320E /* Home2ViewController.swift */,
 				52F36581274F91B0008F8189 /* Cells */,
-				522C4B7B2757A15400C4E4DF /* Network */,
+				522C4B7B2757A15400C4E4DF /* Network2 */,
 			);
 			path = Home2;
 			sourceTree = "<group>";
