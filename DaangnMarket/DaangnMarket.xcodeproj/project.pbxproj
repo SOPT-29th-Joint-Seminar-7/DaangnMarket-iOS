@@ -159,13 +159,13 @@
 			path = APIService2;
 			sourceTree = "<group>";
 		};
-		522C4B842757A9D500C4E4DF /* Model */ = {
+		522C4B842757A9D500C4E4DF /* Model2 */ = {
 			isa = PBXGroup;
 			children = (
 				522C4B852757A9E600C4E4DF /* PostInquiryDataModel.swift */,
 				522C4B87275864E600C4E4DF /* GlobalValue.swift */,
 			);
-			path = Model;
+			path = Model2;
 			sourceTree = "<group>";
 		};
 		52F36581274F91B0008F8189 /* Cells */ = {
@@ -306,7 +306,7 @@
 		DD3CA01B273FA1A10050320E /* Home2 */ = {
 			isa = PBXGroup;
 			children = (
-				522C4B842757A9D500C4E4DF /* Model */,
+				522C4B842757A9D500C4E4DF /* Model2 */,
 				DD3CA01E273FA2750050320E /* Home2ViewController.swift */,
 				52F36581274F91B0008F8189 /* Cells */,
 				522C4B7B2757A15400C4E4DF /* Network2 */,
