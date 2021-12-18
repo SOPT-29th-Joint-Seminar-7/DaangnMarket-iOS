@@ -138,16 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				522C4B7D2757A17A00C4E4DF /* APIService2 */,
-				522C4B7C2757A17000C4E4DF /* Manager2 */,
 			);
 			path = Network2;
-			sourceTree = "<group>";
-		};
-		522C4B7C2757A17000C4E4DF /* Manager2 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Manager2;
 			sourceTree = "<group>";
 		};
 		522C4B7D2757A17A00C4E4DF /* APIService2 */ = {
