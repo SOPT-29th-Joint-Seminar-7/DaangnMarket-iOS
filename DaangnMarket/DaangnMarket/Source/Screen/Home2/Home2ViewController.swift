@@ -5,51 +5,24 @@
 //  Created by 김윤서 on 2021/11/13.
 //
 
-/*
- 구현할 기능 리스트
- 1. [o] 테이블뷰
- 2. [o] 테이블뷰 헤더
- 3. [o] 글쓰기 플로팅 버튼
- 
- 할 일 순서
- 1. [o] UI 요소 만들기
- 2. [o] 버튼마다 액션 정의
- 3. [o] cell 구성하기
- 4. [o] header로 구성하기
- 5. [o] 하트 0개일 때는 숨기기
- 
- 고려사항
- - [o] 중고 버튼은 스택뷰로 구현
- - [o] 하트 0개일 때는 숨기기
- - [x] 0번째 셀 구분선 삭제
- - task 브랜치는 총 4개 만들기 예시) task/#18-ItemTableView
- - task 하나 완성할 때마다 draft PR 날려서 리뷰 받기
- - 테이블뷰셀
- init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-     super.init(style: style, reuseIdentifier: reuseIdentifier) } required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
- 5. UI 뷰
- View Life Cycle override init(frame: CGRect) { super.init(frame: frame) } required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
- 
- 궁금증
- - 레이아웃을 잡을 때 이미지로부터 똑같은 간격을 띄울 경우 나는 타이틀, 서브타이틀, 가격 3개 다 이미지로부터 거리로 잡았는데 수연이는 각각 값을 10씩 줬더라 실제 구현하다보면 뭐가 더 편한가
- - 1번째 cell의 상단 구분선만 삭제하기... 너무 어렵다
-
-해결
- - lazy: 메모리를 아끼기 위햐 쓴다. UI 요소를 설정할 떄 lazy로 하면 되는 것 같음
- */
-
 import UIKit
 
+import Kingfisher
+import Moya
 import SnapKit
 import Then
 
 class Home2ViewController: UIViewController {
 
     // UI 요소 먼저 정의
-    private lazy var tableView = UITableView(frame: .zero, style: .grouped).then {
+    // private lazy var tableView = UITableView(frame: .zero, style: .grouped).then {
+    private lazy var tableView = UITableView().then {
         $0.registerReusableCell(ProductTableViewCell.self)
         $0.separatorColor = Color.daangnGray1
         $0.separatorInset = UIEdgeInsets(top: 0, left: 17, bottom: 0, right: 30)
+        if #available(iOS 15, *) {
+            $0.sectionHeaderTopPadding = 0
+        }
     }
 
     private let tableViewHeader = UITableViewHeaderFooterView().then {
@@ -86,23 +59,42 @@ class Home2ViewController: UIViewController {
 
     private var itemList: [Item] = []
 
+    let provider = MoyaProvider<PostInquiryService>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        notificationCenterReload()
+        productInquiry()
         setLayouts()
-        setDelegation()
         updateData()
+        setDelegation()
+        tableView.reloadData()
     }
 }
 
+// MARK: Set 함수
 extension Home2ViewController {
     private func setDelegation() {
-        tableView.delegate = self
-        tableView.dataSource = self
+            tableView.delegate = self
+            tableView.dataSource = self
     }
 
     private func updateData() {
         let itemList = ItemListModel()
         self.itemList = itemList.getItemListModel()
+    }
+
+    func notificationCenterReload() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(notificationAction),
+                                               name: NSNotification.Name("reload"),
+                                               object: nil)
+    }
+
+    @objc func notificationAction(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
 
@@ -124,21 +116,39 @@ extension Home2ViewController: UITableViewDelegate {
 
 extension Home2ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemList.count
+        switch GlobalValue.shared.productListData?.data.count {
+        case nil:
+            return 0
+        default:
+            return GlobalValue.shared.productListData!.data.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(indexPath: indexPath) as ProductTableViewCell
-        cell.updateData(data: itemList[indexPath.row])
-        // 안 되네
-        switch indexPath.row {
-        case 0:
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            return cell
-        case 1, 2:
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 17, bottom: 0, right: 30)
-            return cell
+
+        switch GlobalValue.shared.productListData {
+        case nil:
+            return UITableViewCell()
         default:
+            let url = URL(string: "\(GlobalValue.shared.productListData!.data[indexPath.row].img)")
+            cell.productImageView.kf.setImage(with: url)
+            cell.productTitleLabel.text = GlobalValue.shared.productListData?.data[indexPath.row].title
+            cell.productSubTatleLabel.text = "\(GlobalValue.shared.productListData!.data[indexPath.row].address) · \(indexPath.row)분 전"
+
+            // 제품 가격
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            let priceResult = numberFormatter.string(from: NSNumber(value: GlobalValue.shared.productListData!.data[indexPath.row].price))
+            cell.productPriceLabel.text = "\(priceResult!)원"
+
+            cell.likeIconImageView.image = Image.likeIcon
+            if indexPath.row == 0 {
+                cell.likeIconImageView.isHidden = true
+                cell.likeCountLabel.isHidden = true
+            } else {
+                cell.likeCountLabel.text = "\(indexPath.row)"
+            }
             cell.separatorInset = UIEdgeInsets(top: 0, left: 17, bottom: 0, right: 30)
             return cell
         }
@@ -188,4 +198,41 @@ extension Home2ViewController {
             $0.bottom.equalToSuperview().inset(103)
         }
     }
+}
+
+// MARK: Network
+extension Home2ViewController {
+
+           // signUp 함수
+       func productInquiry() {
+           provider.request(.postInquiry) { response in
+               switch response {
+               case .success(let result):
+                   do {
+                       GlobalValue.shared.productListData = try result.map(PostInquiryDataModel.self)
+                       NotificationCenter.default.post(name: NSNotification.Name("reload"),
+                                                       object: nil)
+                   } catch(let err) {
+                       print("---> catch 실패 \(err.localizedDescription)")
+                   }
+               case .failure(let err):
+                   print("---> 실패 \(err.localizedDescription)")
+               }
+           }
+       }
+}
+
+extension String { func toDate() -> Date? {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    dateFormatter.timeZone = TimeZone(identifier: "UTC")
+    if let date = dateFormatter.date(from: self) {return date} else { return nil }
+}
+}
+
+extension Date { func toString() -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    dateFormatter.timeZone = TimeZone(identifier: "UTC")
+    return dateFormatter .string(from: self)}
 }
